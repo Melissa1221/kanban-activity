@@ -1,0 +1,52 @@
+name: Mover una issue a "In progress" cuando se realize una PR
+
+on:
+    pull_request:
+        types: [opened, reopened]
+
+jobs:
+    move-card:
+        runs-on: ubuntu-22.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            
+            - name: Authenticacion GitHub CLI
+              run: echo "${{ secrets.CI_TOKEN }}" | gh auth login --with-token
+
+            - name: Buscar y mover elementos del proyecto
+              env:
+                PR_NUMBER: ${{ github.event.pull_request.number }}
+                PROJECT_NUMBER: 2
+                ORG: "@me"
+                STATUS_NAME: "In progress"
+              run: |
+                # Busca el número asociado del issue en el PR si existe (close, fixed, ...):
+                ISSUE_NUMBER=$(gh pr view "$PR_NUMBER" --json closingIssuesReferences \
+                    -q ".closingIssuesReferences[0].number")
+                if [ -z "$ISSUE_NUMBER" ]; then
+                    echo "No issue vinculated to PR"
+                    exit 0
+                fi
+
+                # Busca el ID del project:
+                PROJECT_ID=$(gh project list --format json \
+                  -q ".projects[]|select(.number == "$PROJECT_NUMBER").id")
+
+                # Busca el ID del project 'Status':
+                FIELD_ID=$(gh project field-list "$PROJECT_NUMBER" --owner "$ORG" \
+                    --format json --jq '.fields | map(select(.name == "Status").id)[0]')
+                
+                # Busca la ID de la opcion 'In progress' en el campo del project 'Status'
+                OPTION_ID=$(gh project field-list "$PROJECT_NUMBER" \
+                    --owner "$ORG" --format json --jq ".fields | \
+                    map(select(.name == \"Status\"))[0].options | \
+                    map(select(.name == \"$STATUS_NAME\").id)[0]")
+
+                # Busca la ID del item de la issue en el projecto
+                ITEM_ID=$(gh project item-list "$PROJECT_NUMBER" --owner "$ORG" \
+                    --format json --jq ".items | map(select(.content.number == "$ISSUE_NUMBER").id)[0]")
+
+                # Mueve el item del project
+                gh project item-edit --project-id "$PROJECT_ID" --id "$ITEM_ID" \
+                    --field-id "$FIELD_ID" --single-select-option-id "$OPTION_ID"
