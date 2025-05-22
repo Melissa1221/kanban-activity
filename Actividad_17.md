@@ -38,7 +38,7 @@ Selecionamos **Custom template** y se nos abrira una nueva pestaña para crear n
 
 Aqui cambiamos el nombre a **User Story**, darle una descripcion apropiada y pegar lo siguiente en **Template content**:
 
-```
+```md
 **As a** (specific role – e.g., "developer," "admin," "customer")  
 **I need** (clear functionality or feature needed)  
 **So that** (explain the value or business reason for this feature)
@@ -58,6 +58,7 @@ Given <initial context or system state>
 When <user performs an action>  
 Then <expected outcome or behavior>  
 And <optional additional conditions>
+```
 ```
 
 Finalmente presionamos el boton **Propose changes** y presionamos el boton **Commit changes** para confirmar el cambio en el repositorio.
@@ -107,6 +108,37 @@ Ademas se crea una nueva label en Github llamada `technical debt` para marcar aq
 <div align = "center">
   <img src="img/Parte3_Labels.png" width="1000">
 </div>
+
+
+
+## **Ejercicio 2: Uso avanzado de etiquetas (labels) para priorización y estado**
+
+Aprender a usar etiquetas de manera más detallada para indicar la prioridad y el estado de las historias.
+
+Se crearon nuevas etiquetas como high priority, medium priority, y low priority.
+
+<div align = "center">
+  <img src="img/ej2-new-labels.jpg" width="1000">
+</div>
+
+Ahora asignamos una de estas etiquetas a cada historia de usuario en el Product Backlog para indicar su prioridad.
+
+<div align = "center">
+  <img src="img/ej2-add-new-labels.jpg" width="1000">
+</div>
+
+Adicionalmente creamos etiquetas como in review, blocked, y ready for testing.
+
+<div align = "center">
+  <img src="img/ej2-new-labels-2.png" width="1000">
+</div>
+
+Finalmente usamos estas etiquetas para actualizar el estado de las historias según su progreso en el Kanban board.
+
+<div align = "center">
+  <img src="img/ej2-add-new-labels-2.png" width="1000">
+</div>
+
 
 
 ## **Ejercicio 3: Automatización de Kanban board con GitHub Actions**
@@ -223,4 +255,32 @@ Por ultimo se edita la tarjeta correspondiente al Issue, actualizando el campo S
                 --field-id "$FIELD_ID" --single-select-option-id "$OPTION_ID"
 ```
 
+
+## **Ejercicio 5: Refinamiento de backlog basado en comentarios de los stakeholders**
+
+Según lo requerido creamos una nueva historia de usario usando el template de user story
+```md
+As a user
+I need export the data of my counters to a CSV file
+So that I can analyze or share the counter data outside the application
+
+Context & Assumptions
+The export feature should include the name of each counter and its current value
+The exported CSV file should be compatible with common spreadsheet tools like Excel or Google sheets
+
+
+Scenario: Export all counters to a CSV file
+Given that the counter service is running  
+And the counter value is updated
+When the user selects the "Export to CSV" option
+Then a CSV file should be generated and downloaded
+And the file should contain a list of counter names and their corresponding values
+
+```
+
+Ahora realizamos una sesión de refinamiento del backlog y priorizamos esta nueva historia en el Product Backlog.
+
+<div align = "center">
+  <img src="img/ej5.png" width="1000">
+</div>
 
