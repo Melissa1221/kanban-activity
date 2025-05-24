@@ -59,7 +59,6 @@ When <user performs an action>
 Then <expected outcome or behavior>  
 And <optional additional conditions>
 ```
-```
 
 Finalmente presionamos el boton **Propose changes** y presionamos el boton **Commit changes** para confirmar el cambio en el repositorio.
 
@@ -109,7 +108,31 @@ Ademas se crea una nueva label en Github llamada `technical debt` para marcar aq
   <img src="img/Parte3_Labels.png" width="1000">
 </div>
 
+## **Ejercicio 1: Crear un Epic y vincular historias de usuario**
 
+Aprendimos a organizar funcionalidades más grandes agrupando historias de usuario dentro de un Epic.
+
+Creamos un nuevo Epic llamado "Counter Management" para reunir todas las historias relacionadas con esta funcionalidad.
+
+<div align = "center">
+  <img src="img/ej1-milestone.png" width="1000">
+</div>
+
+Vinculamos al Epic las historias de usuario existentes:
+- Need a service that has a counter
+- Must allow multiple counters
+- Counters can be reset
+
+Además, añadimos una nueva historia de usuario llamada "Generate counter usage reports" que se relaciona con la funcionalidad del epic.
+```gherkin
+Scenario: Generate usage report for all counters
+	Given I´m a logged-in system administrator
+	And counters have been used over time
+	When I request a usage report
+	Then the system generates a report summarizing the activity of all counters
+	And the report includes total counts, timestamps and reset events
+	And I can download the report in a format
+```
 
 ## **Ejercicio 2: Uso avanzado de etiquetas (labels) para priorización y estado**
 
@@ -255,6 +278,19 @@ Por ultimo se edita la tarjeta correspondiente al Issue, actualizando el campo S
                 --field-id "$FIELD_ID" --single-select-option-id "$OPTION_ID"
 ```
 
+## **Ejercicio 4: Seguimiento de tiempo y esfuerzo usando GitHub Projects**
+
+En este ejercicio realizamos el seguimiento del tiempo estimado y el tiempo real invertido en cada historia de usuario dentro de GitHub Projects.
+
+Añadimos campos personalizados en el Kanban board para registrar:
+- Estimate: esfuerzo estimado, en horas.
+- Actual Time: Tiempo real invertido durante el desarrollo.
+
+<div align = "center">
+  <img src="img/ej4-tiempos.png" width="1000">
+</div>
+
+Asignamos valores de estimación ficticias para cada historia de usuario en el Product Backlog antes del sprint. En una situación real, a medida que se va avanzando en el desarrollo, se va actualizando el campo *Actual Time* con las horas dedicadas.
 
 ## **Ejercicio 5: Refinamiento de backlog basado en comentarios de los stakeholders**
 
