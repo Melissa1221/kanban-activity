@@ -141,25 +141,25 @@ Aprender a usar etiquetas de manera más detallada para indicar la prioridad y e
 Se crearon nuevas etiquetas como high priority, medium priority, y low priority.
 
 <div align = "center">
-  <img src="img/ej2-new-labels.jpg" width="1000">
+  <img src="img/ej2-new-labels.jpg" width="400">
 </div>
 
 Ahora asignamos una de estas etiquetas a cada historia de usuario en el Product Backlog para indicar su prioridad.
 
 <div align = "center">
-  <img src="img/ej2-add-new-labels.jpg" width="1000">
+  <img src="img/ej2-add-new-labels.jpg" width="400">
 </div>
 
 Adicionalmente creamos etiquetas como in review, blocked, y ready for testing.
 
 <div align = "center">
-  <img src="img/ej2-new-labels-2.png" width="1000">
+  <img src="img/ej2-new-labels-2.png" width="400">
 </div>
 
 Finalmente usamos estas etiquetas para actualizar el estado de las historias según su progreso en el Kanban board.
 
 <div align = "center">
-  <img src="img/ej2-add-new-labels-2.png" width="1000">
+  <img src="img/ej2-add-new-labels-2.png" width="400">
 </div>
 
 
@@ -287,7 +287,7 @@ Añadimos campos personalizados en el Kanban board para registrar:
 - Actual Time: Tiempo real invertido durante el desarrollo.
 
 <div align = "center">
-  <img src="img/ej4-tiempos.png" width="1000">
+  <img src="img/ej4-tiempos.png" width="800">
 </div>
 
 Asignamos valores de estimación ficticias para cada historia de usuario en el Product Backlog antes del sprint. En una situación real, a medida que se va avanzando en el desarrollo, se va actualizando el campo *Actual Time* con las horas dedicadas.
@@ -317,6 +317,6 @@ And the file should contain a list of counter names and their corresponding valu
 Ahora realizamos una sesión de refinamiento del backlog y priorizamos esta nueva historia en el Product Backlog.
 
 <div align = "center">
-  <img src="img/ej5.png" width="1000">
+  <img src="img/ej5.png" width="300">
 </div>
 
